@@ -1,0 +1,20 @@
+PODS:
+  - CoreStore (8.0.1)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - CoreStore (~> 8.0)
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - CoreStore
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  CoreStore: b8ed5be7d39af83a235878e4c8555134591badf4
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 951bb2fc861514581005356dcdc92f911689f480
+
+COCOAPODS: 1.10.2

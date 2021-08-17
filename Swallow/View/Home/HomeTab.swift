@@ -18,17 +18,21 @@ struct HomeTab: View {
                     .fontWeight(.bold)
                     .frame(height: 60)
                 VStack {
-                    Text(baby.name)
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
-                        .frame(height: 60)
+                    if let name = baby.name {
+                        Text(name)
+                            .font(.system(size: 30))
+                            .fontWeight(.bold)
+                            .frame(height: 60)
+                    }
                     Image("family")
                         .renderingMode(.original)
-                    Text(baby.birth.daysBetweenNow().text)
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
-                        .frame(height: 60)
-                        .foregroundColor(Color.darkPurpleColor)
+                    if let birth = baby.birth {
+                        Text(birth.daysBetweenNow().text)
+                            .font(.system(size: 30))
+                            .fontWeight(.bold)
+                            .frame(height: 60)
+                            .foregroundColor(Color.darkPurpleColor)
+                    }
                 }
                 .frame(width: 300, height: 300)
                 .background(Color.white)

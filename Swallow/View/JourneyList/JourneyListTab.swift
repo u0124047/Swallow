@@ -15,7 +15,7 @@ struct JourneyListTab: View {
             List {
                 ForEach(dict.sorted { $0.0 < $1.0 }, id: \.key) { key, value in
                     Section(header: Text(key)) {
-                        ForEach(value){ j in
+                        ForEach(value, id: \.id){ j in
                             JourneyLargeCell(journey: j)
                         }
                     }

@@ -3,10 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440DF90226C9F2E5006CD758 /* Baby+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DF90026C9F2E5006CD758 /* Baby+CoreDataClass.swift */; };
+		440DF90326C9F2E5006CD758 /* Baby+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DF90126C9F2E5006CD758 /* Baby+CoreDataProperties.swift */; };
+		441A976526CA137000A9A726 /* JourneyType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441A976326CA137000A9A726 /* JourneyType+CoreDataProperties.swift */; };
+		441A976626CA137000A9A726 /* JourneyType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441A976426CA137000A9A726 /* JourneyType+CoreDataClass.swift */; };
+		441A976F26CA471F00A9A726 /* Journey+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441A976E26CA471F00A9A726 /* Journey+CoreDataProperties.swift */; };
+		441A977026CA471F00A9A726 /* Journey+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441A976D26CA471F00A9A726 /* Journey+CoreDataClass.swift */; };
+		441A978626CB57B900A9A726 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441A978426CB57B900A9A726 /* Photo+CoreDataClass.swift */; };
+		441A978726CB57B900A9A726 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441A978526CB57B900A9A726 /* Photo+CoreDataProperties.swift */; };
 		444C88F426C2195D00D59BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C88F326C2195D00D59BF0 /* AppDelegate.swift */; };
 		444C88F626C2195D00D59BF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C88F526C2195D00D59BF0 /* SceneDelegate.swift */; };
 		444C88F826C2195D00D59BF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C88F726C2195D00D59BF0 /* ContentView.swift */; };
@@ -16,7 +24,6 @@
 		444C890326C2196300D59BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 444C890126C2196300D59BF0 /* LaunchScreen.storyboard */; };
 		444C890E26C2196300D59BF0 /* SwallowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C890D26C2196300D59BF0 /* SwallowTests.swift */; };
 		444C891926C2196300D59BF0 /* SwallowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C891826C2196300D59BF0 /* SwallowUITests.swift */; };
-		444C892B26C2496000D59BF0 /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C892A26C2496000D59BF0 /* Journey.swift */; };
 		444C893A26C24B1D00D59BF0 /* JourneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C893926C24B1D00D59BF0 /* JourneyCell.swift */; };
 		444C894226C24B5300D59BF0 /* JourneyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C894126C24B5300D59BF0 /* JourneyDetail.swift */; };
 		444C894726C2692500D59BF0 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444C894626C2692500D59BF0 /* Popup.swift */; };
@@ -25,9 +32,9 @@
 		4486DB5A26C51B47004EE77B /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486DB5926C51B47004EE77B /* HomeTab.swift */; };
 		4486DB5F26C51BEA004EE77B /* JourneysTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486DB5E26C51BEA004EE77B /* JourneysTab.swift */; };
 		4486DB6B26C51ED5004EE77B /* SettingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486DB6A26C51ED5004EE77B /* SettingTab.swift */; };
-		44C520BF26C3C693004BE259 /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C520BE26C3C693004BE259 /* Baby.swift */; };
 		44C520C426C4AFB2004BE259 /* JourneyLargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C520C326C4AFB2004BE259 /* JourneyLargeCell.swift */; };
 		44EFE69E26C35C1A0068BDE0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFE69D26C35C1A0068BDE0 /* Utils.swift */; };
+		AFB854E587CDAF5A2D5504F6 /* Pods_Swallow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B16ADBE603EED6AA5F0355 /* Pods_Swallow.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		440DF90026C9F2E5006CD758 /* Baby+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Baby+CoreDataClass.swift"; sourceTree = "<group>"; };
+		440DF90126C9F2E5006CD758 /* Baby+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Baby+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		441A976326CA137000A9A726 /* JourneyType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "JourneyType+CoreDataProperties.swift"; path = "/Users/kathy/GitProject/Swallow/Swallow/Model/JourneyType+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		441A976426CA137000A9A726 /* JourneyType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "JourneyType+CoreDataClass.swift"; path = "/Users/kathy/GitProject/Swallow/Swallow/Model/JourneyType+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		441A976D26CA471F00A9A726 /* Journey+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Journey+CoreDataClass.swift"; path = "/Users/kathy/GitProject/Swallow/Swallow/Model/Journey+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		441A976E26CA471F00A9A726 /* Journey+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Journey+CoreDataProperties.swift"; path = "/Users/kathy/GitProject/Swallow/Swallow/Model/Journey+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		441A978426CB57B900A9A726 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataClass.swift"; path = "/Users/kathy/GitProject/Swallow/Swallow/Model/Photo+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		441A978526CB57B900A9A726 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataProperties.swift"; path = "/Users/kathy/GitProject/Swallow/Swallow/Model/Photo+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		444C88F026C2195D00D59BF0 /* Swallow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swallow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		444C88F326C2195D00D59BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		444C88F526C2195D00D59BF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +78,6 @@
 		444C891426C2196300D59BF0 /* SwallowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwallowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		444C891826C2196300D59BF0 /* SwallowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwallowUITests.swift; sourceTree = "<group>"; };
 		444C891A26C2196300D59BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		444C892A26C2496000D59BF0 /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		444C893926C24B1D00D59BF0 /* JourneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCell.swift; sourceTree = "<group>"; };
 		444C894126C24B5300D59BF0 /* JourneyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetail.swift; sourceTree = "<group>"; };
 		444C894626C2692500D59BF0 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
@@ -72,9 +86,11 @@
 		4486DB5926C51B47004EE77B /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		4486DB5E26C51BEA004EE77B /* JourneysTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneysTab.swift; sourceTree = "<group>"; };
 		4486DB6A26C51ED5004EE77B /* SettingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTab.swift; sourceTree = "<group>"; };
-		44C520BE26C3C693004BE259 /* Baby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
 		44C520C326C4AFB2004BE259 /* JourneyLargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyLargeCell.swift; sourceTree = "<group>"; };
 		44EFE69D26C35C1A0068BDE0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C1B4B7644807C7810BBECBA2 /* Pods-Swallow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swallow.release.xcconfig"; path = "Target Support Files/Pods-Swallow/Pods-Swallow.release.xcconfig"; sourceTree = "<group>"; };
+		E3B16ADBE603EED6AA5F0355 /* Pods_Swallow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swallow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDCC63D39DD7ADFC8CDF9ADC /* Pods-Swallow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swallow.debug.xcconfig"; path = "Target Support Files/Pods-Swallow/Pods-Swallow.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFB854E587CDAF5A2D5504F6 /* Pods_Swallow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019C213D39F8A866E21300D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FDCC63D39DD7ADFC8CDF9ADC /* Pods-Swallow.debug.xcconfig */,
+				C1B4B7644807C7810BBECBA2 /* Pods-Swallow.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		444C88E726C2195D00D59BF0 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +135,8 @@
 				444C890C26C2196300D59BF0 /* SwallowTests */,
 				444C891726C2196300D59BF0 /* SwallowUITests */,
 				444C88F126C2195D00D59BF0 /* Products */,
+				019C213D39F8A866E21300D4 /* Pods */,
+				F72B32A8BC583126682F72C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,8 +218,14 @@
 		447AA84C26C3BB0900DD7BC5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				444C892A26C2496000D59BF0 /* Journey.swift */,
-				44C520BE26C3C693004BE259 /* Baby.swift */,
+				441A978426CB57B900A9A726 /* Photo+CoreDataClass.swift */,
+				441A978526CB57B900A9A726 /* Photo+CoreDataProperties.swift */,
+				441A976D26CA471F00A9A726 /* Journey+CoreDataClass.swift */,
+				441A976E26CA471F00A9A726 /* Journey+CoreDataProperties.swift */,
+				441A976426CA137000A9A726 /* JourneyType+CoreDataClass.swift */,
+				441A976326CA137000A9A726 /* JourneyType+CoreDataProperties.swift */,
+				440DF90026C9F2E5006CD758 /* Baby+CoreDataClass.swift */,
+				440DF90126C9F2E5006CD758 /* Baby+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +273,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		F72B32A8BC583126682F72C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3B16ADBE603EED6AA5F0355 /* Pods_Swallow.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +288,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 444C891D26C2196300D59BF0 /* Build configuration list for PBXNativeTarget "Swallow" */;
 			buildPhases = (
+				3E5691AA78D150A841FF96EB /* [CP] Check Pods Manifest.lock */,
 				444C88EC26C2195D00D59BF0 /* Sources */,
 				444C88ED26C2195D00D59BF0 /* Frameworks */,
 				444C88EE26C2195D00D59BF0 /* Resources */,
+				BA7D0FD6DF5E3062539ABCB3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,27 +408,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E5691AA78D150A841FF96EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swallow-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA7D0FD6DF5E3062539ABCB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swallow/Pods-Swallow-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swallow/Pods-Swallow-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swallow/Pods-Swallow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		444C88EC26C2195D00D59BF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				441A976F26CA471F00A9A726 /* Journey+CoreDataProperties.swift in Sources */,
+				441A977026CA471F00A9A726 /* Journey+CoreDataClass.swift in Sources */,
 				4486DB6B26C51ED5004EE77B /* SettingTab.swift in Sources */,
-				44C520BF26C3C693004BE259 /* Baby.swift in Sources */,
 				444C894D26C26F7900D59BF0 /* JourneyTypeCell.swift in Sources */,
 				4486DB5F26C51BEA004EE77B /* JourneysTab.swift in Sources */,
+				441A976526CA137000A9A726 /* JourneyType+CoreDataProperties.swift in Sources */,
 				444C893A26C24B1D00D59BF0 /* JourneyCell.swift in Sources */,
 				444C88F426C2195D00D59BF0 /* AppDelegate.swift in Sources */,
+				441A976626CA137000A9A726 /* JourneyType+CoreDataClass.swift in Sources */,
+				441A978726CB57B900A9A726 /* Photo+CoreDataProperties.swift in Sources */,
+				440DF90226C9F2E5006CD758 /* Baby+CoreDataClass.swift in Sources */,
 				444C894726C2692500D59BF0 /* Popup.swift in Sources */,
 				444C88FB26C2195D00D59BF0 /* Swallow.xcdatamodeld in Sources */,
+				441A978626CB57B900A9A726 /* Photo+CoreDataClass.swift in Sources */,
 				444C88F626C2195D00D59BF0 /* SceneDelegate.swift in Sources */,
 				44EFE69E26C35C1A0068BDE0 /* Utils.swift in Sources */,
 				44C520C426C4AFB2004BE259 /* JourneyLargeCell.swift in Sources */,
 				4486DB4C26C5162D004EE77B /* JourneyListTab.swift in Sources */,
 				444C88F826C2195D00D59BF0 /* ContentView.swift in Sources */,
+				440DF90326C9F2E5006CD758 /* Baby+CoreDataProperties.swift in Sources */,
 				444C894226C24B5300D59BF0 /* JourneyDetail.swift in Sources */,
 				4486DB5A26C51B47004EE77B /* HomeTab.swift in Sources */,
-				444C892B26C2496000D59BF0 /* Journey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +641,7 @@
 		};
 		444C891E26C2196300D59BF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDCC63D39DD7ADFC8CDF9ADC /* Pods-Swallow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -570,6 +663,7 @@
 		};
 		444C891F26C2196300D59BF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1B4B7644807C7810BBECBA2 /* Pods-Swallow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

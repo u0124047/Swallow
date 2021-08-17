@@ -15,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if Baby.getAllBabys().count == 0 {
+            Baby.createInitialData()
+        }
+        if JourneyType.getAllJourneyTypes().count == 0 {
+            JourneyType.createInitialData()
+        }
         return true
     }
 

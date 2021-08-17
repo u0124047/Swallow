@@ -42,32 +42,41 @@ struct JourneyLargeCell: View {
                         ZStack(alignment: .topTrailing) {
                             ZStack(alignment: .bottomTrailing) {
                                 pageImageView()
-                                Text(journey.date.daysBetweenNow().text)
-                                    .font(.system(size: 18))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color.white)
-                                    .padding()
-                            }
-                            if journey.images.count > 1 {
-                                ZStack(alignment: .topTrailing) {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.black.opacity(0.4))
-                                        .frame(width: 30, height: 20)
-                                    Text("\(self.pageIndex+1)/\(journey.images.count)")
-                                        .frame(width: 30, height: 20, alignment: .center)
-                                        .font(.system(size: 12))
+                                if let date = journey.date {
+                                    Text(date.daysBetweenNow().text)
+                                        .font(.system(size: 18))
+                                        .fontWeight(.bold)
                                         .foregroundColor(Color.white)
+                                        .padding()
                                 }
-                                .padding(8)
+                            }
+                            if let journeyId = journey.id {
+                                let images = Photo.getAllPhotos(journeyId: journeyId)
+                                if images.count > 1 {
+                                    ZStack(alignment: .topTrailing) {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.black.opacity(0.4))
+                                            .frame(width: 30, height: 20)
+                                        Text("\(self.pageIndex+1)/\(images.count)")
+                                            .frame(width: 30, height: 20, alignment: .center)
+                                            .font(.system(size: 12))
+                                            .foregroundColor(Color.white)
+                                    }
+                                    .padding(8)
+                                }
                             }
                         }
-                        Text(journey.title)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading)
-                        Text(journey.content)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.system(size: 14))
-                            .padding(.leading)
+                        if let title = journey.title {
+                            Text(title)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading)
+                        }
+                        if let content = journey.content {
+                            Text(content)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.system(size: 14))
+                                .padding(.leading)
+                        }
                     }
                 }
             }
@@ -76,15 +85,17 @@ struct JourneyLargeCell: View {
 
     func pageImageView() -> some View {
         TabView {
-            let images = journey.images
-            ForEach(0..<images.count) { idx in
-                ZStack(alignment: .bottomTrailing) {
-                    images[idx]
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .onAppear {
-                            self.pageIndex = idx
+            if let journeyId = journey.id {
+                let images = Photo.getAllPhotos(journeyId: journeyId)
+                ForEach(0..<images.count) { idx in
+                    if let data = images[idx].data, let image = UIImage(data: data) {
+                        ZStack(alignment: .bottomTrailing) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: 200)
                         }
+                    }
                 }
             }
         }

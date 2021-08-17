@@ -11,25 +11,37 @@ struct JourneyCell: View {
     let journey: Journey
     var body: some View {
         NavigationLink(destination: JourneyDetail(journey: journey)) {
-            RoundedRectangle(cornerRadius: 2.5)
-                .foregroundColor(journey.date<Date() ? .gray : .yellow)
-                .frame(width: 5, height: 45)
-            Image(journey.type.rawValue)
-                .cornerRadius(40)
+            if let date = journey.date {
+                RoundedRectangle(cornerRadius: 2.5)
+                    .foregroundColor(date<Date() ? .gray : .yellow)
+                    .frame(width: 5, height: 45)
+            }
+
+            if let imgName = journey.journeyType {
+                Image(imgName)
+                    .cornerRadius(40)
+            }
+
             VStack(alignment: .leading) {
                 HStack{
                     VStack(alignment: .leading) {
-                        Text(journey.title)
+                        if let title = journey.title {
+                            Text(title)
+                        }
                     }
                     Spacer()
                     VStack(alignment: .leading) {
-                        Text(journey.date, style: .time)
-                            .font(.subheadline)
+                        if let date = journey.date {
+                            Text(date, style: .time)
+                                .font(.subheadline)
+                        }
                     }
                 }
-                Text(journey.content)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                if let content = journey.content {
+                    Text(content)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
             }
         }
     }

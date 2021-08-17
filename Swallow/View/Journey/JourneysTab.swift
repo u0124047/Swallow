@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct JourneysTab: View {
+    @State var showImagePicker: Bool = false
+    @State private var images: [(id: UUID, image: Image)] = []
 
     @State private var showingSelectJourneyTypePopup = false
     @State private var showingCreateJourneyPopup = false
 
-    @State private var journey: Journey = Journey.init()
+    @State private var journey: Journey? = Journey(())
     @Binding private var journeys: [Journey]
 
     init(journeys: Binding<[Journey]> ) {
@@ -20,14 +23,38 @@ struct JourneysTab: View {
     }
 
     var filterJourneys: [Journey] {
-        return self.journeys.sorted(by: {$0.date > $1.date}).filter({$0.date.isSameDate(self.journey.date)})
+        return self.journeys.sorted(by: {$0.date ?? Date() > $1.date ?? Date()}).filter({($0.date ?? Date()).isSameDate(self.journey?.date ?? Date())})
+    }
+
+    private var dateBinding: Binding<Date> {
+        Binding {
+            self.journey?.date ?? Date()
+        } set: {
+            self.journey?.date = $0
+        }
+    }
+    
+    private var titleBinding: Binding<String> {
+        Binding {
+            self.journey?.title ?? ""
+        } set: {
+            self.journey?.title = $0
+        }
+    }
+
+    private var contentBinding: Binding<String> {
+        Binding {
+            self.journey?.content ?? ""
+        } set: {
+            self.journey?.content = $0
+        }
     }
 
     var body: some View {
         ZStack {
             Color.bgColor.ignoresSafeArea()
             VStack {
-                DatePicker("日期", selection: self.$journey.date, displayedComponents: .date)
+                DatePicker("日期", selection: dateBinding, displayedComponents: .date)
                     .environment(\.locale, Locale(identifier: "zh_Hant_TW"))
                     .environment(\.calendar, Calendar(identifier: .republicOfChina))
                     .datePickerStyle(GraphicalDatePickerStyle())
@@ -71,16 +98,21 @@ struct JourneysTab: View {
 
     private func selectJourneyTypePopup() -> some View {
         HStack{
-            let values: [JourneyType] = JourneyType.allCases
+            let values: [JourneyType] = JourneyType.shared ?? []
             ForEach(values, id: \.self) { type in
                 Button(action: {
                     self.showingSelectJourneyTypePopup.toggle()
                     self.showingCreateJourneyPopup.toggle()
-                    self.journey.type = type
-                    self.journey.title = type.localize()
+                    self.journey?.journeyType = type.key
+                    self.journey?.title = type.value
+                    if self.journey?.date == nil {
+                        self.journey?.date = Date()
+                    }
                 }) {
-                    Image(type.rawValue)
-                        .renderingMode(.original)
+                    if let imgName = type.key {
+                        Image(imgName)
+                            .renderingMode(.original)
+                    }
                 }
             }
         }
@@ -91,74 +123,156 @@ struct JourneysTab: View {
     }
 
     private func createJourneyPopup() -> some View {
-        VStack{
-            Image(self.journey.type.rawValue)
-                .resizable()
-                .aspectRatio(contentMode: ContentMode.fit)
-                .frame(width: 100, height: 100)
+        VStack {
+            ScrollView {
+                Group {
+                    if let imgName = journey?.journeyType {
+                        Image(imgName)
+                            .resizable()
+                            .aspectRatio(contentMode: ContentMode.fit)
+                            .frame(width: 100, height: 100)
+                    }
 
-            Text("新增 \(self.journey.date.convertDateToString()) \(self.journey.type.localize())")
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+                    if let date = journey?.date, let type = journey?.journeyType {
+                        Text("新增 \(date.convertDateToString()) \(type)")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                    }
+                }
+                Spacer()
+                Group {
+                    DatePicker(selection: dateBinding, label: { Text("時間") })
 
-            Spacer()
+                    TextField("標題", text: titleBinding)
+                        .background(Color.white)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.pinkColor, lineWidth: 1)
+                        )
 
-            DatePicker(selection: self.$journey.date, label: { Text("時間") })
+                    TextEditor(text: contentBinding)
+                        .frame(height: 100)
+                        .lineSpacing(10)
+                        .autocapitalization(.words)
+                        .disableAutocorrection(true)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.pinkColor, lineWidth: 1)
+                        )
+                }
+                Spacer()
+                Group {
+                    List(images, id: \.id) { img in
+                        img.image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 200)
+                    }.frame(height: CGFloat(images.count) * CGFloat(200))
+                }
+                Spacer()
+                Group {
+                    Button(
+                        action: {
+                            self.showImagePicker.toggle()
+                        },
+                        label: { Text("新增照片") }
+                    )
 
-            TextField("標題", text: $journey.title)
-                .background(Color.white)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.pinkColor, lineWidth: 1)
-                )
+                    Button(action: {
+                        self.showingCreateJourneyPopup.toggle()
+                        self.journey?.id = UUID()
+                        if let _journey = self.journey {
+                            self.journeys.append(_journey)
+                            Journey.create(journey: _journey)
+                            saveImages()
+                        }
+                    }) {
+                        Text("新增")
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                    }
+                    .padding(10)
+                    .frame(width: 300, height: 40)
+                    .background(Color.pinkColor)
+                    .clipShape(Capsule())
 
-            TextEditor(text: $journey.content)
-                .frame(height: 100)
-                .lineSpacing(10)
-                .autocapitalization(.words)
-                .disableAutocorrection(true)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.pinkColor, lineWidth: 1)
-                )
-            Spacer()
-
-            Button(action: {
-                self.showingCreateJourneyPopup.toggle()
-                self.journey.id = UUID()
-                self.journeys.append(self.journey)
-            }) {
-                Text("新增")
-                    .font(.system(size: 14))
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
+                    Button(action: {
+                        self.showingCreateJourneyPopup.toggle()
+                    }) {
+                        Text("取消")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color.pinkColor)
+                            .fontWeight(.bold)
+                    }
+                    .padding(10)
+                    .frame(width: 300, height: 40)
+                    .background(Color.white)
+                    .clipShape(Capsule())
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.pinkColor, lineWidth: 1)
+                    )
+                }
             }
-            .padding(10)
-            .frame(width: 300, height: 40)
-            .background(Color.pinkColor)
-            .clipShape(Capsule())
-
-            Button(action: {
-                self.showingCreateJourneyPopup.toggle()
-            }) {
-                Text("取消")
-                    .font(.system(size: 14))
-                    .foregroundColor(Color.pinkColor)
-                    .fontWeight(.bold)
-            }
-            .padding(10)
-            .frame(width: 300, height: 40)
-            .background(Color.white)
-            .clipShape(Capsule())
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.pinkColor, lineWidth: 1)
-            )
         }
         .padding(EdgeInsets(top: 70, leading: 20, bottom: 40, trailing: 20))
         .background(Color.white)
         .cornerRadius(10.0)
         .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
+        .sheet(isPresented: $showImagePicker) {
+            ImagePicker(isShown: self.$showImagePicker, images: self.$images)
+        }
+    }
+
+    func saveImages() {
+        if let journeyId = self.journey?.id {
+            Photo.createInitialData(journey_id: journeyId, datas: images.map({$0.image.asUIImage()}))
+        }
+    }
+}
+
+class ImagePickerCordinator : NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+
+    @Binding var isShown    : Bool
+    @Binding var images      : [(id: UUID, image: Image)]
+
+    init(isShown : Binding<Bool>, images: Binding<[(id: UUID, image: Image)]>) {
+        _isShown = isShown
+        _images   = images
+    }
+
+    //Selected Image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let img = (id: UUID(), image: Image(uiImage: uiImage))
+        images.append(img)
+        isShown = false
+    }
+
+    //Image selection got cancel
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        isShown = false
+    }
+}
+
+struct ImagePicker : UIViewControllerRepresentable {
+
+    @Binding var isShown    : Bool
+    @Binding var images      : [(id: UUID, image: Image)]
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+
+    }
+
+    func makeCoordinator() -> ImagePickerCordinator {
+        return ImagePickerCordinator(isShown: $isShown, images: $images)
+    }
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
     }
 }

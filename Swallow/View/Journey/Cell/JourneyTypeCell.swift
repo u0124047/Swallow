@@ -10,6 +10,8 @@ import SwiftUI
 struct JourneyTypeCell: View {
     let journeyType: JourneyType
     var body: some View {
-        return Image(journeyType.rawValue).cornerRadius(40)
+        if let imgName = journeyType.key {
+            Image(imgName).cornerRadius(40)
+        }
     }
 }

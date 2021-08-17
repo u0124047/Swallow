@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var babys: [Baby] = [Baby(name: "myBaby", gender: 1, birth: "2021/05/22".convertToDate(), mom: "Kathy", dad: "Sam")]
-    @State private var journeys: [Journey] = testData
+    @State private var babys: [Baby] = Baby.getAllBabys()
+    @State private var journeys: [Journey] = Journey.getAllJourneys()
 
     var body: some View {
         TabView {
@@ -23,7 +23,7 @@ struct ContentView: View {
 
     private var journeyListTab: some View {
         NavigationView {
-            let dict = Dictionary(grouping: journeys, by: {$0.date.convertDateToString()})
+            let dict = Dictionary(grouping: journeys, by: {($0.date ?? Date()).convertDateToString()})
             JourneyListTab(dict: dict)
         }
         .tabItem { Label("", systemImage: "text.below.photo") }
